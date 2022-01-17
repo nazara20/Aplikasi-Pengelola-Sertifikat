@@ -25,6 +25,8 @@
         <link href="<?= base_url('admin/'); ?>assets/css/style.css" rel="stylesheet" type="text/css">
 
         <link href="<?= base_url('admin/'); ?>assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
+        <link href="<?= base_url('admin/'); ?>/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
+        <link type="text/css" href="<?= base_url('admin/'); ?>assets/libs/select2/dist/css/select2.min.css" rel="stylesheet">
         
 </head>
 

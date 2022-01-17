@@ -48,20 +48,21 @@
                                         <td>No KTP(kuasa)</td>
                                         <td>Tgl Pendaftaran</td>
                                         <td>Kode Biaya</td>
-                                        <td>No SuratKuasa</td>
-                                        <td>Tgl SuratKuasa</td>
+                                        <td>No Surat Kuasa</td>
+                                        <td>Tgl Surat Kuasa</td>
                                         <td>Aksi</td>
                                     </tr>
                                 </thead>
 
 
                                 <tbody>
-                                    <?php foreach ($pendaftaran as $pndt) : ?>
+                                    <?php
+                                    $i = 1; foreach ($pendaftaran as $pndt) : ?>
                                         <tr>
-                                            <td><?= $no++ ?></td>
+                                            <td><?= $i ?></td>
                                             <td><?= $pndt['No_Pendaftaran']; ?></td>
                                             <td><?= $pndt['No_KTP']; ?></td>
-                                            <td><?= $pndt['No_KTP(kuasa)']; ?></td>
+                                            <td><?= $pndt['No_KTPkuasa']; ?></td>
                                             <td><?= $pndt['Tgl_Pendaftaran']; ?></td>
                                             <td><?= $pndt['Kode_Biaya']; ?></td>
                                             <td><?= $pndt['No_SuratKuasa']; ?></td>
@@ -71,6 +72,7 @@
                                                 <a onclick="return confirm('apakah anda yakin?')" href="" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
                                             </td>
                                         </tr>
+                                        <?php $i++; ?>
                                     <?php endforeach ?>
 
                                 </tbody>

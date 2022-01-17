@@ -62,7 +62,7 @@
                                         <?php 
                                         $i = 1; foreach ($pemohon as $pmh) : ?>
                                             <tr>
-                                                <td><?= $i++ ?></td>
+                                                <td><?= $i ?></td>
                                                 <td><?= $pmh['No_KTP']; ?></td>
                                                 <td><?= $pmh['Nama_Pemohon']; ?></td>
                                                 <td><?= $pmh['tempat_lahir']; ?></td>

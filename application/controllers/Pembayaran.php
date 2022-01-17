@@ -42,4 +42,77 @@ class Pembayaran extends CI_Controller
         $this->load->view('pembayaran/biaya', $data);
         $this->load->view('template/footer');
     }
+
+    public function tambah()
+    {
+        $data['kodeunikdaftar'] = $this->pendaftaran->buat_kode();
+        $data['kodeuniksurat'] = $this->pendaftaran->buat_kodesurat();
+        $data['title'] = 'BPN Tambah Data Pendaftaran';
+        $data['user'] = $this->db->get_where('user', ['email' =>
+        $this->session->userdata('email')])->row_array();
+        $data['biayaselect'] = $this->pembayaran->getAllBiaya();
+        $data['pemohonselect'] = $this->pemohon->getAllPemohon();
+        $this->form_validation->set_rules('noktp', 'No KTP', 'required|trim');
+        $this->form_validation->set_rules('noktpkuasa', 'No KTP(Kuasa)', 'required|trim|min_length[12]', [
+            'min_length' => 'No KTP terlalu pendek!'
+        ]);
+        $this->form_validation->set_rules('kodebiaya', 'Kode Biaya', 'required|trim');
+        if ($this->form_validation->run() == FALSE) {
+            $this->load->view('template/header', $data);
+            $this->load->view('template/topbar', $data);
+            $this->load->view('template/sidebar', $data);
+            $this->load->view('pendaftaran/tambah', $data);
+            $this->load->view('template/footer');
+        } else {
+            $data = [
+                "No_Pendaftaran	" => $this->input->post('nopendaftaran', true),
+                "No_KTP" => $this->input->post('noktp', true),
+                "No_KTPkuasa" => $this->input->post('noktpkuasa', true),
+                "Kode_Biaya" => $this->input->post('kodebiaya', true),
+                "No_SuratKuasa" => $this->input->post('nosuratkuasa', true),
+                "Tgl_SuratKuasa" => $this->input->post('tanggalsuratkuasa', true),
+                "Tgl_Pendaftaran" => date('Y-m-d'),
+            ];
+            if ($this->pendaftaran->tambahPendaftar($data)) {
+                $this->session->set_flashdata('message', 'Pendaftaran Berhasil');
+                redirect('pendaftaran');
+            } else {
+                $this->session->set_flashdata('message', 'Pendaftaran Gagal');
+                redirect('pendaftaran');
+            }
+        }
+    }
+
+
+    public function tambahbiaya()
+    {
+        $data['title'] = 'BPN Tambah Biaya';
+        $data['kodeunik'] = $this->pembayaran->buat_kode();
+        $data['user'] = $this->db->get_where('user', ['email' =>
+        $this->session->userdata('email')])->row_array();
+        $this->form_validation->set_rules('kodebiaya', 'Kode Biaya', 'trim');
+        $this->form_validation->set_rules('namabiaya', 'Nama Biaya', 'required|trim');
+        $this->form_validation->set_rules('biaya', 'Biaya', 'required|trim');
+        if ($this->form_validation->run() == FALSE) {
+            $this->load->view('template/header', $data);
+            $this->load->view('template/topbar', $data);
+            $this->load->view('template/sidebar', $data);
+            $this->load->view('pembayaran/tambahbiaya', $data);
+            $this->load->view('template/footer');
+        } else {
+            $data = [
+                "Kode_Biaya" => $this->input->post('kodebiaya', true),
+                "Nama_Biaya" => $this->input->post('namabiaya', true),
+                "Biaya	" => $this->input->post('biaya', true),
+            ];
+            if ($this->pembayaran->tambahBiaya($data)) {
+                $this->session->set_flashdata('message', 'Biaya Berhasil DiTambahkan');
+                redirect('pembayaran/biaya');
+            } else {
+                $this->session->set_flashdata('message', 'Biaya Gagal ditambahkan');
+                redirect('pembayaran/biaya');
+            }
+        }
+    }
+
 }

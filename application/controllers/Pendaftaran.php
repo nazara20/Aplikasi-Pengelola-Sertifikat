@@ -8,6 +8,8 @@ class Pendaftaran extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Pendaftaran_model', 'pendaftaran');
+        $this->load->model('Pembayaran_model', 'pembayaran');
+        $this->load->model('Pemohon_model', 'pemohon');
         if (currentUser() == null) {
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Anda belum login, silahkan login terlebih dahulu. </div>');
             redirect('auth');
@@ -31,45 +33,40 @@ class Pendaftaran extends CI_Controller
 
     public function tambah()
     {
+        $data['kodeunikdaftar'] = $this->pendaftaran->buat_kode();
+        $data['kodeuniksurat'] = $this->pendaftaran->buat_kodesurat();
         $data['title'] = 'BPN Tambah Data Pendaftaran';
         $data['user'] = $this->db->get_where('user', ['email' =>
         $this->session->userdata('email')])->row_array();
-        $this->form_validation->set_rules('No_Pendaftaran', 'No Pendaftaran', 'required|trim');
-        $this->form_validation->set_rules('No_KTP', 'No KTP', 'required|trim');
-        $this->form_validation->set_rules('tempatlahir', 'Tempat Lahir', 'required|trim');
-        $this->form_validation->set_rules('tanggallahir', 'Tanggal Lahir', 'required|trim');
-        $this->form_validation->set_rules('alamat', 'Alamat', 'required|trim');
-        $this->form_validation->set_rules('jeniskelamin', 'Jenis Kelamin', 'required|trim');
-        $this->form_validation->set_rules('umur', 'Umur', 'required|trim');
-        $this->form_validation->set_rules('pekerjaan', 'Pekerjaan', 'required|trim');
-        $this->form_validation->set_rules('nohp', 'No HP', 'required|trim|min_length[8]', [
-            'min_length' => 'No HP terlalu pendek!'
+        $data['biayaselect'] = $this->pembayaran->getAllBiaya();
+        $data['pemohonselect'] = $this->pemohon->getAllPemohon();
+        $this->form_validation->set_rules('noktp', 'No KTP', 'required|trim');
+        $this->form_validation->set_rules('noktpkuasa', 'No KTP(Kuasa)', 'required|trim|min_length[12]', [
+            'min_length' => 'No KTP terlalu pendek!'
         ]);
+        $this->form_validation->set_rules('kodebiaya', 'Kode Biaya', 'required|trim');
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('template/header', $data);
             $this->load->view('template/topbar', $data);
             $this->load->view('template/sidebar', $data);
-            $this->load->view('pemohon/tambah', $data);
+            $this->load->view('pendaftaran/tambah', $data);
             $this->load->view('template/footer');
         } else {
             $data = [
+                "No_Pendaftaran	" => $this->input->post('nopendaftaran', true),
                 "No_KTP" => $this->input->post('noktp', true),
-                "Nama_Pemohon" => $this->input->post('nama', true),
-                "tempat_lahir" => $this->input->post('tempatlahir', true),
-                "TTL" => $this->input->post('tanggallahir', true),
-                "Alamat" => $this->input->post('alamat', true),
-                "Jenis_kelamin" => $this->input->post('jeniskelamin', true),
-                "Umur" => $this->input->post('umur', true),
-                "Pekerjaan" => $this->input->post('pekerjaan', true),
-                "Telp" => $this->input->post('nohp', true),
+                "No_KTPkuasa" => $this->input->post('noktpkuasa', true),
+                "Kode_Biaya" => $this->input->post('kodebiaya', true),
+                "No_SuratKuasa" => $this->input->post('nosuratkuasa', true),
+                "Tgl_SuratKuasa" => $this->input->post('tanggalsuratkuasa', true),
                 "Tgl_Pendaftaran" => date('Y-m-d'),
             ];
-            if ($this->pemohon->tambahPemohon($data)) {
-                $this->session->set_flashdata('flash', 'Data Item Berhasil DiTambahkan');
-                redirect('pemohon');
+            if ($this->pendaftaran->tambahPendaftar($data)) {
+                $this->session->set_flashdata('message', 'Pendaftaran Berhasil');
+                redirect('pendaftaran');
             } else {
-                $this->session->set_flashdata('flash', 'Data Item Gagal ditambahkan');
-                redirect('pemohon');
+                $this->session->set_flashdata('message', 'Pendaftaran Gagal');
+                redirect('pendaftaran');
             }
         }
     }

@@ -47,6 +47,13 @@
 <script src="<?= base_url('admin/'); ?>assets/extra-libs/DataTables/datatables.min.js"></script>
 <script src="<?= base_url('admin/'); ?>dist/js/pages/datatable/datatable-basic.init.js"></script>
 
+<script src="<?= base_url('admin/'); ?>assets/libs/select2/dist/js/select2.full.min.js"></script>
+    <script src="<?= base_url('admin/'); ?>assets/libs/select2/dist/js/select2.min.js"></script>
+    <script src="<?= base_url('admin/'); ?>dist/js/pages/forms/select2/select2.init.js"></script>
+    <script src="<?= base_url('admin/'); ?>plugins/select2/js/select2.min.js"></script>
+    <script src="<?= base_url('admin/'); ?>assets/libs/typeahead.js/dist/typeahead.jquery.min.js"></script>
+    <script src="<?= base_url('admin/'); ?>assets/libs/typeahead.js/dist/bloodhound.min.js"></script>
+    <script src="<?= base_url('admin/'); ?>dist/js/pages/forms/typeahead/typeahead.init.js"></script>
 </body>
 
 </html>
