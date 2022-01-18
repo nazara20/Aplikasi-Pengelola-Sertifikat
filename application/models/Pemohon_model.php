@@ -19,5 +19,23 @@ class Pemohon_model extends CI_model
         return false;
     }
 
+    public function editPemohon($data)
+    {
+
+        $this->db->where('id', $this->input->post('id'));
+        $this->db->update('pemohon', $data);
+    }
+
+    public function getPemohonbyId($id)
+    {
+        return $this->db->get_where('pemohon', ['id' => $id])->row_array();
+    }
+
+    public function hapusPemohon($id)
+    {
+        $this->db->where('id', $id);
+        $this->db->delete('pemohon');
+    }
+
     
 }
