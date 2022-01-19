@@ -57,7 +57,8 @@
 
                                 <tbody>
                                     <?php
-                                    $i = 1; foreach ($pendaftaran as $pndt) : ?>
+                                    $i = 1; 
+                                    foreach ($pendaftaran as $pndt) : ?>
                                         <tr>
                                             <td><?= $i ?></td>
                                             <td><?= $pndt['No_Pendaftaran']; ?></td>

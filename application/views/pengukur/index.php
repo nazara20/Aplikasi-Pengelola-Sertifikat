@@ -16,9 +16,9 @@
                             <div class="col-md-4">
                                 <div class="float-right d-none d-md-block">
                                     <div class="dropdown">
-                                        <button class="btn btn-sm btn-primary" type="button" aria-expanded="false">
+                                        <a href="<?= base_url('pengukur/tambah'); ?>" class="btn btn-sm btn-primary" type="button" aria-expanded="false">
                                             <i class="fa fa fa-plus"></i> &nbsp;&nbsp;Tambah
-                                        </button>
+                                        </a>
                                         <button class="btn btn-sm btn-info" type="button" aria-expanded="false">
                                             <i class="fa fa-file-pdf-o"></i> &nbsp;&nbsp;Export
                                         </button>
@@ -45,6 +45,7 @@
                                         <th>No</th>
                                         <th>No HAK</th>
                                         <th>NIP Petugas</th>
+                                        <th>Provinsi</th>
                                         <th>Kecamatan</th>
                                         <th>Kelurahan</th>
                                         <th>RT/RW</th>
@@ -52,18 +53,20 @@
                                         <th>Batas Selatan</th>
                                         <th>Batas Barat</th>
                                         <th>Batas Timur</th>
-                                        <th>Provinsi</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
 
 
                                 <tbody>
-                                    <?php foreach ($pengukur as $pngr) : ?>
+                                    <?php
+                                    $i = 1; 
+                                    foreach ($pengukur as $pngr) : ?>
                                         <tr>
-                                            <td><?= $no++ ?></td>
+                                            <td><?= $i ?></td>
                                             <td><?= $pngr['No_HAK']; ?></td>
                                             <td><?= $pngr['Nip_petugas']; ?></td>
+                                            <td><?= $pngr['Provinsi']; ?></td>
                                             <td><?= $pngr['Kecamatan']; ?></td>
                                             <td><?= $pngr['Kelurahan']; ?></td>
                                             <td><?= $pngr['RT/RW']; ?></td>
@@ -71,12 +74,12 @@
                                             <td><?= $pngr['Batas_selatan']; ?></td>
                                             <td><?= $pngr['Batas_Barat']; ?></td>
                                             <td><?= $pngr['Batas_timur']; ?></td>
-                                            <td><?= $pngr['Provinsi']; ?></td>
                                             <td>
                                                 <a href="" class="btn btn-success btn-sm"><i class="fa fa-pencil"></i></a>
                                                 <a onclick="return confirm('apakah anda yakin?')" href="" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
                                             </td>
                                         </tr>
+                                        <?php $i++; ?>
                                     <?php endforeach ?>
 
                                 </tbody>

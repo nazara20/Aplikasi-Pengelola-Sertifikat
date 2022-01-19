@@ -16,9 +16,9 @@
                             <div class="col-md-4">
                                 <div class="float-right d-none d-md-block">
                                     <div class="dropdown">
-                                        <button class="btn btn-sm btn-primary" type="button" aria-expanded="false">
+                                        <a href="<?= base_url('datatanah/tambah'); ?>" class="btn btn-sm btn-primary" type="button" aria-expanded="false">
                                             <i class="fa fa fa-plus"></i> &nbsp;&nbsp;Tambah
-                                        </button>
+                                        </a>
                                         <button class="btn btn-sm btn-info" type="button" aria-expanded="false">
                                             <i class="fa fa-file-pdf-o"></i> &nbsp;&nbsp;Export
                                         </button>
@@ -38,61 +38,64 @@
                         <div class="card-header"><strong>Data Tanah</strong>
                         </div>
                         <div class="card-body">
-                        <div class="table-responsive">
-                                    <table id="zero_config" class="table table-striped table-bordered table-hover display nowrap table-sm m-b-0" style="width:100%">
-                                <thead>
-                                    <tr>
-                                    <td>No</td>
-                             <td>No HAK</td>
-                             <td>No KTP</td>
-                             <td>Letak Bidang Tnh</td>
-                             <td>Luas Tnh</td>
-                             <td>Status tnh</td>
-                             <td>No kohir</td>
-                             <td>No Persil</td>
-                             <td>Nama pewaris</td>
-                             <td>Meninggal thn</td>
-                             <td>Surat waris</td>
-                             <td>Nama pmbri hibah</td>
-                             <td>tgl hibah</td>
-                             <td>No akta hibah	</td>
-                             <td>tgl pembelian</td>
-                             <td>Nm PPAT pembelian</td>
-                             <td>Aksi</td>
-                                    </tr>
-                                </thead>
+                            <div class="table-responsive">
+                                <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>No HAK</th>
+                                            <th>No KTP</th>
+                                            <th>Letak Bidang Tnh</th>
+                                            <th>Luas Tanah</th>
+                                            <th>Status tanah</th>
+                                            <th>No kohir</th>
+                                            <th>No Persil</th>
+                                            <th>Nama pewaris</th>
+                                            <th>Meninggal tahun &emsp;&emsp;&emsp;</th>
+                                            <th>Surat waris &emsp;&emsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;</th>
+                                            <th>Nama pemberi hibah &nbsp;&emsp;</th>
+                                            <th>tanggal hibah &nbsp;&emsp;&nbsp;&emsp;&emsp;&emsp;</th>
+                                            <th>No akta Hibah &emsp;&nbsp;&emsp;&emsp;&emsp;</th>
+                                            <th>Tanggal Pembelian &emsp;&emsp;</th>
+                                            <th>Nama PPAT pembelian &emsp;</th>
+                                            <th>Aksi</th>
+                                        </tr>
+                                    </thead>
 
 
-                                <tbody>
-                                <?php foreach ($datatanah as $dt) : ?>
-                             <tr>
-                                 <td><?= $no++ ?></td>
-                                 <td><?= $dt['No_HAK']; ?></td>
-                                 <td><?= $dt['No_KTP']; ?></td>
-                                 <td><?= $dt['Letak_Bidang_Tnh']; ?></td>
-                                 <td><?= $dt['Luas_Tnh']; ?></td>
-                                 <td><?= $dt['Status_tnh']; ?></td>
-                                 <td><?= $dt['No_kohir']; ?></td>
-                                 <td><?= $dt['No_Persil']; ?></td>
-                                 <td><?= $dt['Nama_pewaris']; ?></td>
-                                 <td><?= $dt['Meninggal_thn']; ?></td>
-                                 <td><?= $dt['Surat_waris']; ?></td>
-                                 <td><?= $dt['Nama_pmbri_hibah']; ?></td>
-                                 <td><?= $dt['tgl_hibah'];?></td>
-                                 <td><?= $dt['No_akta_hibah']; ?></td>
-                                 <td><?= $dt['tgl_pembelian']; ?></td>
-                                 <td><?= $dt['Nm_PPAT_pembelian']; ?></td>
-                                     <td>
-                                         <a href="" class="btn btn-success btn-sm"><i class="fa fa-pen"></i></a>
-                                         <a onclick="return confirm('apakah anda yakin?')" href="" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
-                                     </td>
-                             </tr>
-                         <?php endforeach ?>
+                                    <tbody>
+                                        <?php
+                                        $i = 1;
+                                        foreach ($datatanah as $dt) : ?>
+                                            <tr>
+                                                <td><?= $i ?></td>
+                                                <td><?= $dt['No_HAK']; ?></td>
+                                                <td><?= $dt['No_KTP']; ?></td>
+                                                <td><?= $dt['Letak_Bidang_Tnh']; ?></td>
+                                                <td><?= $dt['Luas_Tnh']; ?></td>
+                                                <td><?= $dt['Status_tnh']; ?></td>
+                                                <td><?= $dt['No_kohir']; ?></td>
+                                                <td><?= $dt['No_Persil']; ?></td>
+                                                <td><?= $dt['Nama_pewaris']; ?></td>
+                                                <td><?= $dt['Meninggal_thn']; ?></td>
+                                                <td> <a href="<?= base_url(''); ?>datatanah/viewpicture/<?= $dt['id']; ?>">Lihat Surat</a></td>
+                                                <td><?= $dt['Nama_pmbri_hibah']; ?></td>
+                                                <td><?= $dt['tgl_hibah']; ?></td>
+                                                <td><?= $dt['No_akta_hibah']; ?></td>
+                                                <td><?= $dt['tgl_pembelian']; ?></td>
+                                                <td><?= $dt['Nm_PPAT_pembelian']; ?></td>
+                                                <td>
+                                                    <a href="" class="btn btn-success btn-sm"><i class="fa fa-pencil"></i></a>
+                                                    <a onclick="return confirm('apakah anda yakin?')" href="" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                                                </td>
+                                            </tr>
+                                            <?php $i++; ?>
+                                        <?php endforeach ?>
 
 
-                                </tbody>
-                            </table>
-                        </div>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div> <!-- end col -->

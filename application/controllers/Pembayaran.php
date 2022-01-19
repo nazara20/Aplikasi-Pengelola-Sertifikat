@@ -8,6 +8,7 @@ class Pembayaran extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Pembayaran_model', 'pembayaran');
+        $this->load->model('Pendaftaran_model', 'pendaftaran');
         if (currentUser() == null) {
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Anda belum login, silahkan login terlebih dahulu. </div>');
             redirect('auth');
@@ -18,7 +19,6 @@ class Pembayaran extends CI_Controller
     public function index()
     {
         $data['title'] = 'BPN Pembayaran';
-        $data['aktif'] = 'datapembayaran';
         $data['user'] = $this->db->get_where('user', ['email' =>
         $this->session->userdata('email')])->row_array();
         $data['pembayaran'] = $this->pembayaran->getAllPembayaran();
@@ -32,7 +32,6 @@ class Pembayaran extends CI_Controller
     public function biaya()
     {
         $data['title'] = 'BPN Biaya';
-        $data['aktif'] = 'biaya';
         $data['user'] = $this->db->get_where('user', ['email' =>
         $this->session->userdata('email')])->row_array();
         $data['biaya'] = $this->pembayaran->getAllBiaya();
@@ -45,40 +44,36 @@ class Pembayaran extends CI_Controller
 
     public function tambah()
     {
-        $data['kodeunikdaftar'] = $this->pendaftaran->buat_kode();
-        $data['kodeuniksurat'] = $this->pendaftaran->buat_kodesurat();
-        $data['title'] = 'BPN Tambah Data Pendaftaran';
+        $data['kodeuniksps'] = $this->pembayaran->buat_kodesps();
+        $data['title'] = 'BPN Tambah Data Pembayaran';
         $data['user'] = $this->db->get_where('user', ['email' =>
         $this->session->userdata('email')])->row_array();
-        $data['biayaselect'] = $this->pembayaran->getAllBiaya();
-        $data['pemohonselect'] = $this->pemohon->getAllPemohon();
-        $this->form_validation->set_rules('noktp', 'No KTP', 'required|trim');
-        $this->form_validation->set_rules('noktpkuasa', 'No KTP(Kuasa)', 'required|trim|min_length[12]', [
-            'min_length' => 'No KTP terlalu pendek!'
-        ]);
-        $this->form_validation->set_rules('kodebiaya', 'Kode Biaya', 'required|trim');
+        $data['pendaftaranselect'] = $this->pendaftaran->getAllPendaftaran();
+        $this->form_validation->set_rules('No_SPS', 'No_SPS', 'required|trim');
+        $this->form_validation->set_rules('No_Pendaftaran', 'No_Pendaftaran', 'required|trim');
+        $this->form_validation->set_rules('Jumlah_Biaya', 'Jumlah_Biaya', 'required|trim');
+        $this->form_validation->set_rules('Terbilang', 'Terbilang', 'required|trim');
+        $this->form_validation->set_rules('Tgl_SPS', 'Tgl_SPS', 'required|trim');
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('template/header', $data);
             $this->load->view('template/topbar', $data);
             $this->load->view('template/sidebar', $data);
-            $this->load->view('pendaftaran/tambah', $data);
+            $this->load->view('pembayaran/tambah', $data);
             $this->load->view('template/footer');
         } else {
             $data = [
-                "No_Pendaftaran	" => $this->input->post('nopendaftaran', true),
-                "No_KTP" => $this->input->post('noktp', true),
-                "No_KTPkuasa" => $this->input->post('noktpkuasa', true),
-                "Kode_Biaya" => $this->input->post('kodebiaya', true),
-                "No_SuratKuasa" => $this->input->post('nosuratkuasa', true),
-                "Tgl_SuratKuasa" => $this->input->post('tanggalsuratkuasa', true),
-                "Tgl_Pendaftaran" => date('Y-m-d'),
+                "No_SPS" => $this->input->post('No_SPS', true),
+                "No_Pendaftaran" => $this->input->post('No_Pendaftaran', true),
+                "Jumlah_Biaya" => $this->input->post('Jumlah_Biaya', true),
+                "Terbilang" => $this->input->post('Terbilang', true),
+                "Tgl_SPS" => $this->input->post('Tgl_SPS', true),
             ];
-            if ($this->pendaftaran->tambahPendaftar($data)) {
-                $this->session->set_flashdata('message', 'Pendaftaran Berhasil');
-                redirect('pendaftaran');
+            if ($this->pembayaran->tambah($data)) {
+                $this->session->set_flashdata('message', 'Data Pembayaran Berhasil ditambahkan');
+                redirect('pembayaran');
             } else {
-                $this->session->set_flashdata('message', 'Pendaftaran Gagal');
-                redirect('pendaftaran');
+                $this->session->set_flashdata('message', 'Data Pembayaran Gagal ditambahkan');
+                redirect('pembayaran');
             }
         }
     }

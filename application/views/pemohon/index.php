@@ -60,7 +60,8 @@
 
                                     <tbody>
                                         <?php 
-                                        $i = 1; foreach ($pemohon as $pmh) : ?>
+                                        $i = 1; 
+                                        foreach ($pemohon as $pmh) : ?>
                                             <tr>
                                                 <td><?= $i ?></td>
                                                 <td><?= $pmh['No_KTP']; ?></td>

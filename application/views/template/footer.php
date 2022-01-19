@@ -54,6 +54,7 @@
     <script src="<?= base_url('admin/'); ?>assets/libs/typeahead.js/dist/typeahead.jquery.min.js"></script>
     <script src="<?= base_url('admin/'); ?>assets/libs/typeahead.js/dist/bloodhound.min.js"></script>
     <script src="<?= base_url('admin/'); ?>dist/js/pages/forms/typeahead/typeahead.init.js"></script>
+    <script src="<?= base_url('admin/'); ?>/plugins/bootstrap-filestyle/js/bootstrap-filestyle.min.js"></script>
 </body>
 
 </html>

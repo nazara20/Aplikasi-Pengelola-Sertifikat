@@ -16,9 +16,9 @@
                             <div class="col-md-4">
                                 <div class="float-right d-none d-md-block">
                                     <div class="dropdown">
-                                        <button class="btn btn-sm btn-primary" type="button" aria-expanded="false">
+                                        <a href="<?= base_url('sertifikat/tambah'); ?>" class="btn btn-sm btn-primary" type="button" aria-expanded="false">
                                             <i class="fa fa fa-plus"></i> &nbsp;&nbsp;Tambah
-                                        </button>
+                                        </a>
                                         <button class="btn btn-sm btn-info" type="button" aria-expanded="false">
                                             <i class="fa fa-file-pdf-o"></i> &nbsp;&nbsp;Export
                                         </button>
@@ -52,17 +52,20 @@
 
 
                                     <tbody>
-                                        <?php foreach ($sertifikat as $srt) : ?>
+                                        <?php
+                                        $i = 1;
+                                        foreach ($sertifikat as $srt) : ?>
                                             <tr>
-                                                <td><?= $no++ ?></td>
+                                                <td><?= $i ?></td>
                                                 <td><?= $srt['No_Sertifikat']; ?></td>
                                                 <td><?= $srt['No_HAK']; ?></td>
                                                 <td><?= $srt['Tgl_Pengesahan']; ?></td>
                                                 <td>
-                                                    <a href="" class="btn btn-success btn-sm"><i class="fa fa-pen"></i></a>
+                                                    <a href="" class="btn btn-success btn-sm"><i class="fa fa-pencil"></i></a>
                                                     <a onclick="return confirm('apakah anda yakin?')" href="" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
                                                 </td>
                                             </tr>
+                                            <?php $i++; ?>
                                         <?php endforeach ?>
 
 

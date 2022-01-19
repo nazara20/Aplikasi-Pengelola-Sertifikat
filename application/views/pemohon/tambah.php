@@ -17,9 +17,9 @@
                             <div class="col-md-4">
                                 <div class="float-right d-none d-md-block">
                                     <div class="dropdown">
-                                        <button class="btn btn-sm btn-secondary waves-effect m-l-5" type="button" aria-expanded="false">
+                                        <a href="<?= base_url('pemohon'); ?>" class="btn btn-sm btn-secondary waves-effect m-l-5" type="button" aria-expanded="false">
                                             <i class="mdi mdi-keyboard-return mr-1"></i> BACK
-                                        </button>
+                                        </a>
 
                                     </div>
                                 </div>
