@@ -37,4 +37,24 @@ class Sertifikat_model extends CI_model
         $kodejadi = "BPN/BJM/2022/".$kodemax;    // hasilnya ODJ-9921-0001 dst.
         return $kodejadi;  
   }
+
+  public function editSertifikat($data)
+  {
+
+      $this->db->where('id', $this->input->post('id'));
+      $this->db->update('sertifikat', $data);
+  }
+
+  public function getSertifikatbyId($id)
+  {
+      return $this->db->get_where('sertifikat', ['id' => $id])->row_array();
+  }
+
+  public function hapusSertifikat($id)
+  {
+      $this->db->where('id', $id);
+      $this->db->delete('sertifikat');
+  }
+
+
 }

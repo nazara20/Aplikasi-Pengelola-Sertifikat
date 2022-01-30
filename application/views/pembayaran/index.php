@@ -63,8 +63,8 @@
                                                 <td><?= $pbyr['Terbilang']; ?></td>
                                                 <td><?= $pbyr['Tgl_SPS']; ?></td>
                                                 <td>
-                                                    <a href="" class="btn btn-success btn-sm"><i class="fa fa-pencil"></i></a>
-                                                    <a onclick="return confirm('apakah anda yakin?')" href="" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                                                    <a href="<?= base_url('') ?>pembayaran/edit/<?= $pbyr['id']; ?>" class="btn btn-success btn-sm"><i class="fa fa-pencil"></i></a>
+                                                    <a onclick="return confirm('apakah anda yakin?')" href="<?= base_url('') ?>pembayaran/hapus/<?= $pbyr['id']; ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
                                                 </td>
                                             </tr>
                                             <?php $i++; ?>

@@ -76,4 +76,45 @@ class Pembayaran_model extends CI_model
         $kodejadi = "2022".$kodemax;    // hasilnya ODJ-9921-0001 dst.
         return $kodejadi;  
   }
+
+
+  public function editPembayaran($data)
+  {
+
+      $this->db->where('id', $this->input->post('id'));
+      $this->db->update('pembayaran', $data);
+  }
+
+  public function getPembayaranbyId($id)
+  {
+      return $this->db->get_where('pembayaran', ['id' => $id])->row_array();
+  }
+
+  public function hapusPembayaran($id)
+  {
+      $this->db->where('id', $id);
+      $this->db->delete('pembayaran');
+  }
+
+
+
+
+  public function editBiaya($data)
+  {
+
+      $this->db->where('id', $this->input->post('id'));
+      $this->db->update('biaya', $data);
+  }
+
+  public function getBiayabyId($id)
+  {
+      return $this->db->get_where('biaya', ['id' => $id])->row_array();
+  }
+
+  public function hapusBiaya($id)
+  {
+      $this->db->where('id', $id);
+      $this->db->delete('biaya');
+  }
+
 }

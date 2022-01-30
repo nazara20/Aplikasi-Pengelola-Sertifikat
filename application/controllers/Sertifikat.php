@@ -60,4 +60,43 @@ class Sertifikat extends CI_Controller
             }
         }
     }
+
+    public function edit($id)
+    {
+        $data['title'] = 'BPN Edit Data Sertifikat';
+        $data['datatanahselect'] = $this->datatanah->getAllDatatanah();
+        $data['user'] = $this->db->get_where('user', ['email' =>
+        $this->session->userdata('email')])->row_array();
+        $data['editsertifikat'] = $this->sertifikat->getSertifikatbyId($id);
+        $this->form_validation->set_rules('No_HAK', 'No HAK', 'required|trim');
+        $this->form_validation->set_rules('Tgl_Pengesahan', 'Tgl_Pengesahan', 'required|trim');
+        if ($this->form_validation->run() == FALSE) {
+            $this->load->view('template/header', $data);
+            $this->load->view('template/topbar', $data);
+            $this->load->view('template/sidebar', $data);
+            $this->load->view('sertifikat/edit', $data);
+            $this->load->view('template/footer');
+        } else {
+            $data = [
+                "No_Sertifikat" => $this->input->post('No_Sertifikat', true),
+                "No_HAK" => $this->input->post('No_HAK', true),
+                "Tgl_Pengesahan" => $this->input->post('Tgl_Pengesahan', true),
+            ];
+            if ($this->sertifikat->editSertifikat($data)) {
+                $this->session->set_flashdata('message', 'Data Sertifikat Berhasil diubah');
+                redirect('sertifikat');
+            } else {
+                $this->session->set_flashdata('message', 'Data Sertifikat Gagal diubah');
+                redirect('sertifikat');
+            }
+        }
+    }
+
+    public function hapus($id)
+    {
+        $this->sertifikat->hapusSertifikat($id);
+        $this->session->set_flashdata('flash', 'Data Sertifikat Berhasil DiHapus');
+        redirect('sertifikat');
+    }
+    
 }

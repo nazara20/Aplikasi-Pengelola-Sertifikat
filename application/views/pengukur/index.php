@@ -75,8 +75,8 @@
                                             <td><?= $pngr['Batas_Barat']; ?></td>
                                             <td><?= $pngr['Batas_timur']; ?></td>
                                             <td>
-                                                <a href="" class="btn btn-success btn-sm"><i class="fa fa-pencil"></i></a>
-                                                <a onclick="return confirm('apakah anda yakin?')" href="" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                                                <a href="<?= base_url('') ?>pengukur/edit/<?= $pngr['id']; ?>" class="btn btn-success btn-sm"><i class="fa fa-pencil"></i></a>
+                                                <a onclick="return confirm('apakah anda yakin?')" href="<?= base_url('') ?>pengukur/hapus/<?= $pngr['id']; ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
                                             </td>
                                         </tr>
                                         <?php $i++; ?>

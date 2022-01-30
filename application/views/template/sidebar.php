@@ -57,6 +57,14 @@
                                     <i class="dripicons-document"></i> <span> Sertifikat </span>
                                 </a>
                             </li>
+                            </li>
+                            <li class="menu-title">Laporan</li>
+                            <li>
+                                <a href="" class="waves-effect">
+                                    <i class="dripicons-wallet"></i> <span> Laporan </span>
+                                </a>
+                            </li>
+                           
                         </ul>
 
                     </div>

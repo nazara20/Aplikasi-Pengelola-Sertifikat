@@ -110,4 +110,88 @@ class Pembayaran extends CI_Controller
         }
     }
 
+
+    public function edit($id)
+    {
+        $data['title'] = 'BPN Edit Data Pembayaran';
+        $data['user'] = $this->db->get_where('user', ['email' =>
+        $this->session->userdata('email')])->row_array();
+        $data['editpembayaran'] = $this->pembayaran->getPembayaranbyId($id);
+        $data['pendaftaranselect'] = $this->pendaftaran->getAllPendaftaran();
+        $this->form_validation->set_rules('No_SPS', 'No_SPS', 'required|trim');
+        $this->form_validation->set_rules('No_Pendaftaran', 'No_Pendaftaran', 'required|trim');
+        $this->form_validation->set_rules('Jumlah_Biaya', 'Jumlah_Biaya', 'required|trim');
+        $this->form_validation->set_rules('Terbilang', 'Terbilang', 'required|trim');
+        $this->form_validation->set_rules('Tgl_SPS', 'Tgl_SPS', 'required|trim');
+        if ($this->form_validation->run() == FALSE) {
+            $this->load->view('template/header', $data);
+            $this->load->view('template/topbar', $data);
+            $this->load->view('template/sidebar', $data);
+            $this->load->view('pembayaran/edit', $data);
+            $this->load->view('template/footer');
+        } else {
+            $data = [
+                "No_SPS" => $this->input->post('No_SPS', true),
+                "No_Pendaftaran" => $this->input->post('No_Pendaftaran', true),
+                "Jumlah_Biaya" => $this->input->post('Jumlah_Biaya', true),
+                "Terbilang" => $this->input->post('Terbilang', true),
+                "Tgl_SPS" => $this->input->post('Tgl_SPS', true),
+            ];
+            if ($this->pembayaran->editPembayaran($data)) {
+                $this->session->set_flashdata('message', 'Data Pembayaran Berhasil diubah');
+                redirect('pembayaran');
+            } else {
+                $this->session->set_flashdata('message', 'Data Pembayaran Gagal diubah');
+                redirect('pembayaran');
+            }
+        }
+    }
+
+    public function hapus($id)
+    {
+        $this->pembayaran->hapusPembayaran($id);
+        $this->session->set_flashdata('flash', 'Data Pembayaran Berhasil DiHapus');
+        redirect('pembayaran');
+    }
+
+
+    public function editbiaya($id)
+    {
+        $data['title'] = 'BPN Edit Biaya';
+        $data['user'] = $this->db->get_where('user', ['email' =>
+        $this->session->userdata('email')])->row_array();
+        $data['editbiaya'] = $this->pembayaran->getBiayabyId($id);
+        $this->form_validation->set_rules('kodebiaya', 'Kode Biaya', 'trim');
+        $this->form_validation->set_rules('namabiaya', 'Nama Biaya', 'required|trim');
+        $this->form_validation->set_rules('biaya', 'Biaya', 'required|trim');
+        if ($this->form_validation->run() == FALSE) {
+            $this->load->view('template/header', $data);
+            $this->load->view('template/topbar', $data);
+            $this->load->view('template/sidebar', $data);
+            $this->load->view('pembayaran/editbiaya', $data);
+            $this->load->view('template/footer');
+        } else {
+            $data = [
+                "Kode_Biaya" => $this->input->post('kodebiaya', true),
+                "Nama_Biaya" => $this->input->post('namabiaya', true),
+                "Biaya	" => $this->input->post('biaya', true),
+            ];
+            if ($this->pembayaran->editBiaya($data)) {
+                $this->session->set_flashdata('message', 'Data Biaya Berhasil Diubah');
+                redirect('pembayaran/biaya');
+            } else {
+                $this->session->set_flashdata('message', 'Data Biaya Gagal diubah');
+                redirect('pembayaran/biaya');
+            }
+        }
+    }
+
+    public function hapusbiaya($id)
+    {
+        $this->pembayaran->hapusBiaya($id);
+        $this->session->set_flashdata('flash', 'Data Biaya Berhasil DiHapus');
+        redirect('pembayaran/biaya');
+    }
+
+
 }

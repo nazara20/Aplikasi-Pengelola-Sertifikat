@@ -69,8 +69,8 @@
                                             <td><?= $pndt['No_SuratKuasa']; ?></td>
                                             <td><?= $pndt['Tgl_SuratKuasa']; ?></td>
                                             <td>
-                                            <a href="" class="btn btn-success btn-sm"><i class="fa fa-pencil"></i></a>
-                                                <a onclick="return confirm('apakah anda yakin?')" href="" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                                            <a href="<?= base_url('') ?>pendaftaran/edit/<?= $pndt['id']; ?>" class="btn btn-success btn-sm"><i class="fa fa-pencil"></i></a>
+                                                <a onclick="return confirm('apakah anda yakin?')" href="<?= base_url('') ?>pendaftaran/hapus/<?= $pndt['id']; ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
                                             </td>
                                         </tr>
                                         <?php $i++; ?>

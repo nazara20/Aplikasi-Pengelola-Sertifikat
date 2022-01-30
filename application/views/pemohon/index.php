@@ -76,7 +76,7 @@
                                                 <td><?= $pmh['Telp']; ?></td>
                                                 <td>
                                                     <a href="<?= base_url(); ?>pemohon/edit/<?= $pmh['id']; ?>" class="btn btn-success btn-sm"><i class="fa fa-pencil"></i></a>
-                                                    <a onclick="return confirm('apakah anda yakin?')" href="" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                                                    <a onclick="return confirm('apakah anda yakin?')" href="<?= base_url(); ?>pemohon/hapus/<?= $pmh['id']; ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
                                                 </td>
                                             </tr>
                                             <?php $i++; ?>

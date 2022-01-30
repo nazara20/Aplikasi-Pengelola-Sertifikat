@@ -34,4 +34,42 @@ class Pengukur_model extends CI_model
 
         return false;
     }
+
+    public function editPengukur($data)
+    {
+
+        $this->db->where('id', $this->input->post('id'));
+        $this->db->update('surat_ukur', $data);
+    }
+
+    public function getPengukurbyId($id)
+    {
+        return $this->db->get_where('surat_ukur', ['id' => $id])->row_array();
+    }
+
+    public function hapusPengukur($id)
+    {
+        $this->db->where('id', $id);
+        $this->db->delete('surat_ukur');
+    }
+
+    public function editPetugasUkur($data)
+    {
+
+        $this->db->where('id', $this->input->post('id'));
+        $this->db->update('petugas_ukur', $data);
+    }
+
+    public function getPetugasUkurbyId($id)
+    {
+        return $this->db->get_where('petugas_ukur', ['id' => $id])->row_array();
+    }
+
+    public function hapusPetugasUkur($id)
+    {
+        $this->db->where('id', $id);
+        $this->db->delete('petugas_ukur');
+    }
+
+
 }

@@ -13,7 +13,6 @@ class Pendaftaran extends CI_Controller
         if (currentUser() == null) {
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Anda belum login, silahkan login terlebih dahulu. </div>');
             redirect('auth');
-            
         }
     }
 
@@ -70,5 +69,43 @@ class Pendaftaran extends CI_Controller
             }
         }
     }
-   
+
+    public function edit($id)
+    {
+        $data['title'] = 'BPN Edit Data Pendaftaran';
+        $data['user'] = $this->db->get_where('user', ['email' =>
+        $this->session->userdata('email')])->row_array();
+        $data['editpendaftaran'] = $this->pendaftaran->getPendaftarbyId($id);
+        $data['biayaselect'] = $this->pembayaran->getAllBiaya();
+        $data['pemohonselect'] = $this->pemohon->getAllPemohon();
+        $this->form_validation->set_rules('noktpkuasa', 'No KTP(Kuasa)', 'required|trim|min_length[12]', [
+            'min_length' => 'No KTP terlalu pendek!'
+        ]);
+        if ($this->form_validation->run() == false) {
+            $this->load->view('template/header', $data);
+            $this->load->view('template/topbar', $data);
+            $this->load->view('template/sidebar', $data);
+            $this->load->view('pendaftaran/edit', $data);
+            $this->load->view('template/footer');
+        } else {
+            $data = [
+                "No_Pendaftaran	" => $this->input->post('nopendaftaran', true),
+                "No_KTP" => $this->input->post('noktp', true),
+                "No_KTPkuasa" => $this->input->post('noktpkuasa', true),
+                "Kode_Biaya" => $this->input->post('kodebiaya', true),
+                "No_SuratKuasa" => $this->input->post('nosuratkuasa', true),
+                "Tgl_SuratKuasa" => $this->input->post('tanggalsuratkuasa', true),
+            ];
+            $this->pendaftaran->editPendaftar($data);
+            $this->session->set_flashdata('message', 'Data Pendaftaran Berhasil DiUbah');
+            redirect('pendaftaran');
+        }
+    }
+
+    public function hapus($id)
+    {
+        $this->pendaftaran->hapusPendaftaran($id);
+        $this->session->set_flashdata('flash', 'Data Pendaftar Berhasil DiHapus');
+        redirect('pendaftaran');
+    }
 }

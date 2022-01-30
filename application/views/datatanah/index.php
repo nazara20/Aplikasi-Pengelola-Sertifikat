@@ -85,8 +85,8 @@
                                                 <td><?= $dt['tgl_pembelian']; ?></td>
                                                 <td><?= $dt['Nm_PPAT_pembelian']; ?></td>
                                                 <td>
-                                                    <a href="" class="btn btn-success btn-sm"><i class="fa fa-pencil"></i></a>
-                                                    <a onclick="return confirm('apakah anda yakin?')" href="" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                                                    <a href="<?= base_url(); ?>datatanah/edit/<?= $dt['id']; ?>" class="btn btn-success btn-sm"><i class="fa fa-pencil"></i></a>
+                                                    <a onclick="return confirm('apakah anda yakin?')" href="<?= base_url(); ?>datatanah/hapus/<?= $dt['id']; ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
                                                 </td>
                                             </tr>
                                             <?php $i++; ?>
