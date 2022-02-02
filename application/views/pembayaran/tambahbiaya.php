@@ -51,7 +51,7 @@
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Biaya</label>
                                     <div class="col-sm-10">
-                                        <input class="form-control" type="text" id="biaya" name="biaya" value="<?= set_value('biaya'); ?>">
+                                        <input class="form-control" type="number" id="biaya" name="biaya" value="<?= set_value('biaya'); ?>">
                                         <?= form_error('biaya', '<small class="text-danger pl-3">', '</small>'); ?>
                                     </div>
                                 </div>

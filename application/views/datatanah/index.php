@@ -19,9 +19,6 @@
                                         <a href="<?= base_url('datatanah/tambah'); ?>" class="btn btn-sm btn-primary" type="button" aria-expanded="false">
                                             <i class="fa fa fa-plus"></i> &nbsp;&nbsp;Tambah
                                         </a>
-                                        <button class="btn btn-sm btn-info" type="button" aria-expanded="false">
-                                            <i class="fa fa-file-pdf-o"></i> &nbsp;&nbsp;Export
-                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -78,7 +75,7 @@
                                                 <td><?= $dt['No_Persil']; ?></td>
                                                 <td><?= $dt['Nama_pewaris']; ?></td>
                                                 <td><?= $dt['Meninggal_thn']; ?></td>
-                                                <td> <a href="<?= base_url(''); ?>datatanah/viewpicture/<?= $dt['id']; ?>">Lihat Surat</a></td>
+                                                <td> <a href="<?= base_url(''); ?>datatanah/viewpicture/<?= $dt['id']; ?>">Lihat Surat Waris</a></td>
                                                 <td><?= $dt['Nama_pmbri_hibah']; ?></td>
                                                 <td><?= $dt['tgl_hibah']; ?></td>
                                                 <td><?= $dt['No_akta_hibah']; ?></td>
@@ -87,6 +84,7 @@
                                                 <td>
                                                     <a href="<?= base_url(); ?>datatanah/edit/<?= $dt['id']; ?>" class="btn btn-success btn-sm"><i class="fa fa-pencil"></i></a>
                                                     <a onclick="return confirm('apakah anda yakin?')" href="<?= base_url(); ?>datatanah/hapus/<?= $dt['id']; ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                                                    <a href="<?= base_url(); ?>laporandatatanah/cetak/<?= $dt['id']; ?>" class="btn btn-info btn-sm"><i class="fa fa-file-pdf-o"></i> &nbsp;&nbsp;Cetak Surat</a>
                                                 </td>
                                             </tr>
                                             <?php $i++; ?>

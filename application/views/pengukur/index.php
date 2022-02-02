@@ -19,9 +19,7 @@
                                         <a href="<?= base_url('pengukur/tambah'); ?>" class="btn btn-sm btn-primary" type="button" aria-expanded="false">
                                             <i class="fa fa fa-plus"></i> &nbsp;&nbsp;Tambah
                                         </a>
-                                        <button class="btn btn-sm btn-info" type="button" aria-expanded="false">
-                                            <i class="fa fa-file-pdf-o"></i> &nbsp;&nbsp;Export
-                                        </button>
+                                       
                                     </div>
                                 </div>
                             </div>
@@ -53,7 +51,7 @@
                                         <th>Batas Selatan</th>
                                         <th>Batas Barat</th>
                                         <th>Batas Timur</th>
-                                        <th>Aksi</th>
+                                        <th class="text-center">Aksi</th>
                                     </tr>
                                 </thead>
 
@@ -77,6 +75,7 @@
                                             <td>
                                                 <a href="<?= base_url('') ?>pengukur/edit/<?= $pngr['id']; ?>" class="btn btn-success btn-sm"><i class="fa fa-pencil"></i></a>
                                                 <a onclick="return confirm('apakah anda yakin?')" href="<?= base_url('') ?>pengukur/hapus/<?= $pngr['id']; ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                                                <a href="<?= base_url(); ?>laporansuratukur/cetak/<?= $pngr['id']; ?>" class="btn btn-info btn-sm"><i class="fa fa-file-pdf-o"></i> &nbsp;&nbsp;Cetak Surat</a>
                                             </td>
                                         </tr>
                                         <?php $i++; ?>

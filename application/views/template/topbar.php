@@ -3,7 +3,7 @@
 
                 <!-- LOGO -->
                 <div class="topbar-left">
-                    <a href="index.html" class="logo">
+                    <a href="<?= base_url('dashboard'); ?>" class="logo">
                         <img src="<?=base_url('admin/');?>img/logo.png" alt="" height="48" class="logo-large">
                         <img src="<?=base_url('admin/');?>img/logolight.png" alt="" height="40" class="logo-sm">
                     </a>

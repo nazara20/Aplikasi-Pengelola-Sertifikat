@@ -13,4 +13,9 @@ class User_model extends CI_Model
             ->get()
             ->row_array();
     }
+
+    public function get($id)
+    {
+        return $this->db->select('*')->from('user')->where('id', $id)->get()->row_object();
+    }
 }

@@ -28,6 +28,11 @@
                                     <i class="dripicons-store"></i> <span> Data Tanah </span>
                                 </a>
                             </li>
+                            <li>
+                                <a href="<?= base_url('laporanpendaftar/cetak'); ?>" class="waves-effect">
+                                    <i class="dripicons-store"></i> <span> Laporan Pendaftar </span>
+                                </a>
+                            </li>
 
                             <li class="menu-title">Pengukur</li>
                             <li>
@@ -53,18 +58,21 @@
                                 </a>
                             </li>
                             <li>
+                                <a href="<?= base_url('laporanpembayaran/cetak'); ?>" class="waves-effect">
+                                    <i class="mdi mdi-cash-usd"></i> <span> Laporan Pembayaran </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="<?= base_url('laporansps/cetak'); ?>" class="waves-effect">
+                                    <i class="mdi mdi-cash-usd"></i> <span> Surat Perintah Setor </span>
+                                </a>
+                            </li>
+                            <li>
                                 <a href="<?= base_url('sertifikat'); ?>" class="waves-effect">
                                     <i class="dripicons-document"></i> <span> Sertifikat </span>
                                 </a>
                             </li>
                             </li>
-                            <li class="menu-title">Laporan</li>
-                            <li>
-                                <a href="" class="waves-effect">
-                                    <i class="dripicons-wallet"></i> <span> Laporan </span>
-                                </a>
-                            </li>
-                           
                         </ul>
 
                     </div>

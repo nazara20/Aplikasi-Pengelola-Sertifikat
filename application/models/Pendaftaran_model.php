@@ -8,6 +8,11 @@ class Pendaftaran_model extends CI_model
         return $this->db->get('pendaftaran')->result_array();
     }
 
+    public function getNumberPendaftaran()
+    {
+        return $this->db->get('pendaftaran')->num_rows();
+    }
+
     public function tambahPendaftar($data)
     {
 

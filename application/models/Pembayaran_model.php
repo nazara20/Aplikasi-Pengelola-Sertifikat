@@ -37,7 +37,7 @@ class Pembayaran_model extends CI_model
     
     public function buat_kodesps()   {
 
-        $this->db->select('RIGHT(pembayaran.No_SPS,7) as kode', FALSE);
+        $this->db->select('RIGHT(pembayaran.No_SPS,5) as kode', FALSE);
         $this->db->order_by('No_SPS','DESC');    
         $this->db->limit(1);    
         $query = $this->db->get('pembayaran');      //cek dulu apakah ada sudah ada kode di tabel.    
@@ -115,6 +115,20 @@ class Pembayaran_model extends CI_model
   {
       $this->db->where('id', $id);
       $this->db->delete('biaya');
+  }
+
+  public function get_sum()
+  {
+      $sql = "SELECT SUM(Jumlah_Biaya) as jumlahbiaya FROM pembayaran";
+      $result = $this->db->query($sql);
+      return $result->row()->jumlahbiaya;
+  }
+
+  public function get_sumsps()
+  {
+      $sql = "SELECT SUM(Biaya) as biaya FROM biaya";
+      $result = $this->db->query($sql);
+      return $result->row()->biaya;
   }
 
 }
