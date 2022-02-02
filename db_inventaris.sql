@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 30, 2022 at 03:32 AM
+-- Generation Time: Feb 02, 2022 at 02:52 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.25
 
@@ -39,10 +39,10 @@ CREATE TABLE `biaya` (
 --
 
 INSERT INTO `biaya` (`id`, `Kode_Biaya`, `Nama_Biaya`, `Biaya`) VALUES
-(1, 202200001, 'aass', 'ddd'),
-(4, 202200004, 'ssaa', '33221'),
-(6, 202200006, 'ssasd', '3323'),
-(7, 202200007, 'saa', 'sss');
+(1, 202200001, 'aass', '10000'),
+(4, 202200004, 'ssaa', '12000'),
+(6, 202200006, 'ssasd', '10000'),
+(7, 202200007, 'saa', '13000');
 
 -- --------------------------------------------------------
 
@@ -96,7 +96,8 @@ CREATE TABLE `pembayaran` (
 --
 
 INSERT INTO `pembayaran` (`id`, `No_SPS`, `No_Pendaftaran`, `Jumlah_Biaya`, `Terbilang`, `Tgl_SPS`) VALUES
-(1, '2022/01/00001', 'A-0001', '20.000', 'Dua Puluh Ribu Rupiah', '2022-01-20');
+(1, '2022/01/00001', 'A-0001', '20000', 'Dua Puluh ribu rupiah', '2022-02-02'),
+(2, '2022/01/00002', 'A-0001', '30000', 'Tiga puluh ribu rupiah', '2022-02-02');
 
 -- --------------------------------------------------------
 
@@ -167,7 +168,8 @@ CREATE TABLE `petugas_ukur` (
 --
 
 INSERT INTO `petugas_ukur` (`id`, `Nip_petugas`, `Nama_Petugas`) VALUES
-(2, 1232211, 'Lutung');
+(2, 1232211, 'Lutung'),
+(3, 123321123, 'Lutung Lutung Lutung');
 
 -- --------------------------------------------------------
 
@@ -325,7 +327,7 @@ ALTER TABLE `data_tanah`
 -- AUTO_INCREMENT for table `pembayaran`
 --
 ALTER TABLE `pembayaran`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `pemohon`
@@ -343,7 +345,7 @@ ALTER TABLE `pendaftaran`
 -- AUTO_INCREMENT for table `petugas_ukur`
 --
 ALTER TABLE `petugas_ukur`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `sertifikat`
