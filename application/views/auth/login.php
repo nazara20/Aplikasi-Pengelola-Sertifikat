@@ -1,6 +1,8 @@
     <div class="center">
         <h2><img src="<?= base_url('admin/'); ?>img/logobpncolor.svg" width="60px"> &nbsp; Login Aplikasi BPN </h2>
-        <div class="float-right mb-2"><a href="<?= base_url('landing/index'); ?>"><i class="m-r-10  fas fa-long-arrow-alt-left"></i>&nbsp;Back</a> &emsp;</div>
+        <div class="float-right">
+            <a href="<?= base_url('landing/index'); ?>">&nbsp;Back</a> &emsp;
+        </div>
         <?= $this->session->flashdata('message'); ?>
         <form method="post" action="<?= base_url('auth'); ?>">
             <div class="txt_field">

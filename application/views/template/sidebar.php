@@ -6,12 +6,6 @@
                     <div id="sidebar-menu">
                         <!-- Left Menu Start -->
                         <ul class="metismenu" id="side-menu">
-                            <li class="menu-title">Main</li>
-                            <li>
-                                <a href="<?= base_url('dashboard'); ?>" class="waves-effect">
-                                    <i class="dripicons-meter"></i> <span> Dashboard </span>
-                                </a>
-                            </li>
                             <li class="menu-title">Pendaftaran</li>
                             <li>
                                 <a href="<?= base_url('pemohon'); ?>" class="waves-effect">
@@ -28,12 +22,6 @@
                                     <i class="dripicons-store"></i> <span> Data Tanah </span>
                                 </a>
                             </li>
-                            <li>
-                                <a href="<?= base_url('laporanpendaftar/cetak'); ?>" class="waves-effect">
-                                    <i class="dripicons-store"></i> <span> Laporan Pendaftar </span>
-                                </a>
-                            </li>
-
                             <li class="menu-title">Pengukur</li>
                             <li>
                                 <a href="<?= base_url('pengukur'); ?>" class="waves-effect">
@@ -58,21 +46,27 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="<?= base_url('laporanpembayaran/cetak'); ?>" class="waves-effect">
-                                    <i class="mdi mdi-cash-usd"></i> <span> Laporan Pembayaran </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="<?= base_url('laporansps/cetak'); ?>" class="waves-effect">
-                                    <i class="mdi mdi-cash-usd"></i> <span> Surat Perintah Setor </span>
-                                </a>
-                            </li>
-                            <li>
                                 <a href="<?= base_url('sertifikat'); ?>" class="waves-effect">
                                     <i class="dripicons-document"></i> <span> Sertifikat </span>
                                 </a>
                             </li>
+                            <li class="menu-title">Laporan</li>
+                            <li>
+                                <a href="<?= base_url('laporanpendaftar/cetak'); ?>" class="waves-effect">
+                                    <i class="fa fa-file-pdf-o"></i> <span> Laporan Pendaftar </span>
+                                </a>
                             </li>
+                            <li>
+                                <a href="<?= base_url('laporanpembayaran/cetak'); ?>" class="waves-effect">
+                                    <i class="fa fa-file-pdf-o"></i> <span> Laporan Pembayaran </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="<?= base_url('laporansps/cetak'); ?>" class="waves-effect">
+                                    <i class="fa fa-file-pdf-o"></i> <span> Surat Perintah Setor </span>
+                                </a>
+                            </li>
+                           
                         </ul>
 
                     </div>

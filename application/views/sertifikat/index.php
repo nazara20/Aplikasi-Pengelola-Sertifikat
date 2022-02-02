@@ -19,9 +19,6 @@
                                         <a href="<?= base_url('sertifikat/tambah'); ?>" class="btn btn-sm btn-primary" type="button" aria-expanded="false">
                                             <i class="fa fa fa-plus"></i> &nbsp;&nbsp;Tambah
                                         </a>
-                                        <button class="btn btn-sm btn-info" type="button" aria-expanded="false">
-                                            <i class="fa fa-file-pdf-o"></i> &nbsp;&nbsp;Export
-                                        </button>
                                     </div>
                                 </div>
                             </div>
